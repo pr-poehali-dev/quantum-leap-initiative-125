@@ -24,8 +24,12 @@ export default function Hero() {
           className="w-full h-full object-cover"
           style={{ filter: "brightness(0.45) saturate(1.1)" }}
         >
-          <source src="https://assets.mixkit.co/videos/4985/4985-720.mp4" type="video/mp4" />
-          <source src="https://assets.mixkit.co/videos/2792/2792-720.mp4" type="video/mp4" />
+          {/* Busy startup office - people working at computers */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-busy-office-space-918-large.mp4" type="video/mp4" />
+          {/* Work team working hard in the office */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-work-team-working-hard-in-the-office-33429-large.mp4" type="video/mp4" />
+          {/* Two coworkers in a meeting */}
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-two-coworkers-discussing-something-at-the-office-4866-large.mp4" type="video/mp4" />
         </video>
         {/* Dark gradient overlay */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/60 to-gray-950/30" />
