@@ -50,7 +50,7 @@ export default function Navbar() {
             <div className="flex items-center">
               <a href="/" className="flex items-center space-x-3">
                 <span className="text-xl font-bold bg-gradient-to-r from-blue-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
-                  Pulse Digital
+                  ArenaLab
                 </span>
               </a>
             </div>
@@ -61,7 +61,7 @@ export default function Navbar() {
                   Услуги
                 </a>
                 <a href="#artists" className="text-sm text-gray-300 hover:text-purple-400 transition-colors">
-                  Клиенты
+                  О нас
                 </a>
                 <a href="#success-stories" className="text-sm text-gray-300 hover:text-green-400 transition-colors">
                   Кейсы
@@ -99,7 +99,7 @@ export default function Navbar() {
                 Услуги
               </a>
               <a href="#artists" className="block text-gray-300 hover:text-purple-400">
-                Клиенты
+                О нас
               </a>
               <a href="#success-stories" className="block text-gray-300 hover:text-green-400">
                 Кейсы
