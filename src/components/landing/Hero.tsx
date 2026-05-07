@@ -4,110 +4,6 @@ import AnimatedButton from "./AnimatedButton"
 import CountingStats from "./CountingStats"
 import { cn } from "@/lib/utils"
 
-const screens = [
-  {
-    title: "ArenaLab Dashboard",
-    color: "from-blue-900/80 to-blue-800/60",
-    accent: "#3b82f6",
-    lines: [
-      { w: "70%", color: "bg-blue-400" },
-      { w: "50%", color: "bg-gray-600" },
-      { w: "85%", color: "bg-gray-600" },
-      { w: "40%", color: "bg-purple-400" },
-    ],
-    bars: [40, 65, 50, 80, 55, 90],
-  },
-  {
-    title: "Mobile App · iOS",
-    color: "from-purple-900/80 to-purple-800/60",
-    accent: "#a855f7",
-    lines: [
-      { w: "60%", color: "bg-purple-400" },
-      { w: "80%", color: "bg-gray-600" },
-      { w: "45%", color: "bg-gray-600" },
-      { w: "70%", color: "bg-pink-400" },
-    ],
-    bars: [70, 45, 85, 60, 75, 50],
-  },
-  {
-    title: "AI Assistant · Chat",
-    color: "from-green-900/80 to-green-800/60",
-    accent: "#22c55e",
-    lines: [
-      { w: "90%", color: "bg-green-400" },
-      { w: "55%", color: "bg-gray-600" },
-      { w: "75%", color: "bg-gray-600" },
-      { w: "60%", color: "bg-cyan-400" },
-    ],
-    bars: [55, 80, 65, 90, 45, 70],
-  },
-]
-
-function LaptopCard({ screen, index }: { screen: typeof screens[0]; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 60, rotate: index === 1 ? 0 : index === 0 ? -6 : 6 }}
-      animate={{ opacity: 1, y: 0, rotate: index === 1 ? 0 : index === 0 ? -6 : 6 }}
-      transition={{ duration: 1, delay: 0.3 + index * 0.2, ease: "easeOut" }}
-      style={{ zIndex: index === 1 ? 10 : 5 }}
-      className="relative"
-    >
-      <motion.div
-        animate={{ y: [0, index % 2 === 0 ? -12 : -8, 0] }}
-        transition={{ duration: 3 + index, repeat: Infinity, ease: "easeInOut", delay: index * 0.5 }}
-        className="relative"
-      >
-        {/* Laptop body */}
-        <div className={`relative rounded-xl overflow-hidden border border-white/10 shadow-2xl ${index === 1 ? "w-72 h-44" : "w-56 h-36"}`}
-          style={{ boxShadow: `0 0 40px ${screen.accent}33, 0 20px 60px rgba(0,0,0,0.5)` }}
-        >
-          {/* Screen */}
-          <div className={`w-full h-full bg-gradient-to-br ${screen.color} p-3`}>
-            {/* Titlebar */}
-            <div className="flex items-center justify-between mb-2">
-              <div className="flex space-x-1">
-                <div className="w-2 h-2 bg-red-500 rounded-full" />
-                <div className="w-2 h-2 bg-yellow-500 rounded-full" />
-                <div className="w-2 h-2 bg-green-500 rounded-full" />
-              </div>
-              <div className="text-xs text-white/50 font-mono">{screen.title}</div>
-            </div>
-            {/* Code lines */}
-            <div className="space-y-1 mb-2">
-              {screen.lines.map((line, i) => (
-                <motion.div
-                  key={i}
-                  className={`h-1.5 rounded-full ${line.color} opacity-70`}
-                  style={{ width: line.w }}
-                  initial={{ scaleX: 0 }}
-                  animate={{ scaleX: 1 }}
-                  transition={{ duration: 0.5, delay: 0.8 + index * 0.2 + i * 0.1 }}
-                />
-              ))}
-            </div>
-            {/* Mini bar chart */}
-            <div className="flex items-end space-x-1 h-8">
-              {screen.bars.map((h, i) => (
-                <motion.div
-                  key={i}
-                  className="flex-1 rounded-sm opacity-80"
-                  style={{ backgroundColor: screen.accent }}
-                  initial={{ scaleY: 0 }}
-                  animate={{ scaleY: [0, 1, 0.8, 1] }}
-                  transition={{ duration: 1, delay: 1.2 + index * 0.2 + i * 0.08, repeat: Infinity, repeatDelay: 3 }}
-                  custom={h}
-                  whileInView={{ height: `${h}%` }}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-        {/* Laptop base */}
-        <div className="w-full h-2 bg-gray-700 rounded-b-lg mx-auto" style={{ transform: "perspective(200px) rotateX(20deg)" }} />
-      </motion.div>
-    </motion.div>
-  )
-}
 
 export default function Hero() {
   const stats = [
@@ -118,29 +14,24 @@ export default function Hero() {
 
   return (
     <section className="relative min-h-screen flex items-center pt-24 pb-16 overflow-hidden">
-      {/* Animated background */}
+      {/* Background Video */}
       <div className="absolute inset-0 z-0 bg-gray-950">
-        {/* Grid */}
-        <div className="absolute inset-0 opacity-10"
-          style={{ backgroundImage: "linear-gradient(rgba(59,130,246,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(59,130,246,0.3) 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-        {/* Glow blobs */}
-        <motion.div className="absolute top-1/4 right-1/4 w-96 h-96 rounded-full opacity-20"
-          style={{ background: "radial-gradient(circle, #3b82f6, transparent)" }}
-          animate={{ scale: [1, 1.2, 1], opacity: [0.15, 0.25, 0.15] }}
-          transition={{ duration: 5, repeat: Infinity }} />
-        <motion.div className="absolute bottom-1/3 right-1/3 w-64 h-64 rounded-full opacity-15"
-          style={{ background: "radial-gradient(circle, #a855f7, transparent)" }}
-          animate={{ scale: [1.2, 1, 1.2], opacity: [0.1, 0.2, 0.1] }}
-          transition={{ duration: 7, repeat: Infinity }} />
-        {/* Floating laptops scene */}
-        <div className="absolute right-0 top-0 bottom-0 w-1/2 hidden lg:flex items-center justify-center">
-          <div className="relative flex items-end justify-center gap-4">
-            {screens.map((screen, i) => (
-              <LaptopCard key={i} screen={screen} index={i} />
-            ))}
-          </div>
-        </div>
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/80 to-transparent" />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          className="w-full h-full object-cover"
+          style={{ filter: "brightness(0.45) saturate(1.1)" }}
+        >
+          <source src="https://assets.mixkit.co/videos/4985/4985-720.mp4" type="video/mp4" />
+          <source src="https://assets.mixkit.co/videos/2792/2792-720.mp4" type="video/mp4" />
+        </video>
+        {/* Dark gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-r from-gray-950/90 via-gray-950/60 to-gray-950/30" />
+        <div className="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-transparent to-gray-950/40" />
+        {/* Subtle blue tint */}
+        <div className="absolute inset-0 bg-blue-950/20" />
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
